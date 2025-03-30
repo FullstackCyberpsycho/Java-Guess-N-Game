@@ -10,7 +10,7 @@ public class Main {
     }
 
     private static void printInfo() {
-        System.out.println("(Beta 2)Правила игры:\n" +
+        System.out.println("(Beta 2.1)Правила игры:\n" +
                 "1. Java загадывает число, а user пытается его угадать.\n" +
                 "2. Java может писать «больше» или «меньше», когда user вводит число.\n" +
                 "3. Игра продолжается до тех пор, пока user не угадает число.\n" +

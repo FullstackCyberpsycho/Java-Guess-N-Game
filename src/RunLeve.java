@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ public class RunLeve {
     private final Scanner scanner = new Scanner(System.in);
     private int balance;
 
-    public RunLeve(String leve) {
+    public RunLeve(String leve) throws IOException {
         this.balance = Main.getBalance();
 
         switch (leve) {
@@ -19,7 +20,7 @@ public class RunLeve {
         }
     }
 
-    private void leve(int javaNumR) {
+    private void leve(int javaNumR) throws IOException {
         javaNum = random.nextInt(javaNumR);
             System.out.println("Кол-во попыток: " + count + ". Попытка: " + countGo);
 
@@ -50,26 +51,29 @@ public class RunLeve {
                 Main.setBalance(balance);
 
                 System.out.println("Вы угадали число (" + javaNum + ") c " + --countGo + "-ой попытки! Новый баланс: " + balance);
+                System.out.println("Нажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
 
             if (count == 1) {
                 System.out.println("У вас осталась 1 попытка!");
             } else if (count <= 0) {
-                System.out.println("Ваши попытки кончились. Вы проиграли.");
+                System.out.println("Ваши попытки кончились. Вы проиграли.\nНажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
         }
     }
 
-    private void leve() {
+    private void leve() throws IOException {
         int[] ranges = {50, 100, 200, 300};
         int randomIndex = random.nextInt(ranges.length);
         int horizon = ranges[randomIndex];
         javaNum = random.nextInt(horizon);
 
         System.out.println("Диапазон: 0-" + horizon);
-        System.out.println(javaNum + "Кол-во попыток: " + count + ". Попытка: " + countGo);
+        System.out.println("Кол-во попыток: " + count + ". Попытка: " + countGo);
 
         while (true) {
             count--;
@@ -97,19 +101,22 @@ public class RunLeve {
                 balance += winAmount;
                 Main.setBalance(balance);
                 System.out.println("Вы угадали число (" + javaNum + ") c " + --countGo + "-ой попытки! Новый баланс: " + balance);
+                System.out.println("Нажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
 
             if (count == 1) {
                 System.out.println("Осталась 1 попытка!");
             } else if (count <= 0) {
-                System.out.println("Вы проиграли.");
+                System.out.println("Вы проиграли.\nНажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
         }
     }
 
-    private void leve(String s) {
+    private void leve(String s) throws IOException {
         System.out.print("В этом уровне баланс не прибавляется!\n");
         System.out.print("Введите максимальное число: ");
         int maxNumber = scanner.nextInt();
@@ -133,13 +140,16 @@ public class RunLeve {
                 System.out.println("Java: Больше!");
             } else {
                 System.out.println("Вы угадали число (" + javaNum + ") c " + --countGo + "-ой попытки!");
+                System.out.println("Нажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
 
             if (count == 1) {
                 System.out.println("Осталась 1 попытка!");
             } else if (count <= 0) {
-                System.out.println("Вы проиграли.");
+                System.out.println("Вы проиграли.\nНажмите 'Enter' чтобы продолжить");
+                System.in.read();
                 break;
             }
         }
