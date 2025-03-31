@@ -5,11 +5,11 @@ public class Main{
     private static int balance = 0;
     static File balanceF = new File("src/resources/balance.txt");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         start();
     }
 
-    private static void start() throws IOException {
+    private static void start() throws IOException, InterruptedException {
         Scanner scanner = new Scanner(System.in);
         String numLevel, choice;
         PrintInfo print = new PrintInfo();
@@ -24,15 +24,9 @@ public class Main{
                     numLevel = scanner.nextLine();
                     new RunLeve(numLevel);
                     break;
-                case "2":
-                    new Casino();
-                    break;
-                case "3":
-                    print.rules();
-                    break;
-                case "4":
-                    print.statistics();
-                    break;
+                case "2": new Casino(); break;
+                case "3": print.rules(); break;
+                case "4": print.statistics(); break;
             }
         }
     }

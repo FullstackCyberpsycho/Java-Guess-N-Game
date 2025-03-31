@@ -26,7 +26,7 @@ public class PrintInfo {
     }
 
     public void mainMenu() {
-        System.out.print("beta 2.3\n" +
+        System.out.print("beta 2.4\n" +
                 "1 - Угадай число\n" +
                 "2 - Казино\n" +
                 "3 - Правила\n" +
@@ -44,24 +44,11 @@ public class PrintInfo {
     }
 
     public void statistics() {
-        int balance = 0;
+        //int numGames;
         System.out.println("Beta");
-        try {
-            if (!Main.balanceF.exists()) {
-                Main.balanceF.createNewFile();
-                Main.setBalance(0);
-            }
-
-            Scanner myReader = new Scanner(Main.balanceF);
-            if (myReader.hasNextLine()) {
-                balance = Integer.parseInt(myReader.nextLine().trim());
-            }
-            myReader.close();
-        } catch (IOException | NumberFormatException e) {
-            System.out.println("Ошибка при чтении баланса. Установлен 0.");
-            balance = 0;
-        }
-        System.out.println("Баланс: " + balance + "\n");
+        GameStats gameStats = new GameStats();
+        gameStats.showStats();
+        System.out.println("Баланс: " + Main.getBalance() + "\n");
     }
 
     /*public void casino() {

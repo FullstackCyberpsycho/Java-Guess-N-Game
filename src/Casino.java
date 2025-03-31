@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,12 +8,12 @@ public class Casino {
     private int balance, bet;
     private PrintInfo print = new PrintInfo();
 
-    public Casino() {
+    public Casino() throws IOException, InterruptedException {
         this.balance = Main.getBalance();
         start();
     }
 
-    private void start() {
+    private void start() throws IOException, InterruptedException {
         String choice;
         while (true) {
             System.out.print("\nДобро пожаловать в казино! Ваш баланс: " + balance + "$\n" +
@@ -82,12 +83,45 @@ public class Casino {
 
         System.out.println("Колесо остановилось на x" + multiplier + "!");
         System.out.println("Ваш новый баланс: " + balance + "$");
-        //Main.setBalance(balance);
+        Main.setBalance(balance);
     }
 
-    private void craps() {
-        System.out.println("Пока недоступно!");
+    private void craps() throws IOException, InterruptedException {
+        int craps1 = random.nextInt(6);
+        int craps2 = random.nextInt(6);
+        int sumCraps;
+
+        System.out.print("Введите ставку: ");
+        bet = scanner.nextInt();
+        scanner.nextLine();
+
+        if (bet > balance || bet <= 0) {
+            System.out.println("Недостаточно средств!");
+            return;
+        }
+
+        System.out.print("'Enter' - кинуть кубик ");
+        System.in.read();
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Выпало число: " + craps1);
+        System.out.print("'Enter' - кинуть второй кубик ");
+        System.in.read();
+        Thread.sleep(750);
+
+        System.out.println("Выпало число: " + craps2);
+        sumCraps = craps1 + craps2;
+        System.out.println("Сумма кубиков: " + sumCraps);
+        if (sumCraps > 7) {
+            balance += bet;
+            System.out.println("Вы выиграли! Ваш баланс: " + balance + "$  +" + bet);
+        } else {
+            balance -= bet;
+            System.out.println("Вы проиграли... Ваш баланс: " + balance + "$  -" + bet);
+        }
+        Main.setBalance(balance);
     }
-
-
 }
