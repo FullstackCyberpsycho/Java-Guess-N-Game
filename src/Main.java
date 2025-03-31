@@ -25,9 +25,12 @@ public class Main{
                     new RunLeve(numLevel);
                     break;
                 case "2":
-                    print.rules();
+                    new Casino();
                     break;
                 case "3":
+                    print.rules();
+                    break;
+                case "4":
                     print.statistics();
                     break;
             }
