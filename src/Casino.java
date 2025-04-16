@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,6 +8,9 @@ public class Casino {
     private final Random random = new Random();
     private int balance, bet;
     private PrintInfo print = new PrintInfo();
+    //GetGame getGame = new GetGame();
+    //private File fiftyFiftyF = new File("src/resources/getFiftyFifty");
+    //private String dateFiftyFiftyF;
 
     public Casino() throws IOException, InterruptedException {
         this.balance = Main.getBalance();
@@ -35,14 +39,57 @@ public class Casino {
         }
     }
 
-    private void fiftyFifty() {
-        System.out.print("Введите ставку: ");
+    private void fiftyFifty() throws IOException {
+        /*if (getGame.getFiftyFifty("")) {
+            System.out.print("Купите игру! её цена: 1000\n" +
+                    "Нажмите 'Enter' - для покупки");
+            System.in.read();
+
+            if (balance != 1000) {
+                System.out.println("Недостаточно средств!");
+                return;
+            } else {
+                balance -= 1000;
+            }
+        }
+        try {
+            //File fiftyFiftyF = null;
+            Scanner myReader = new Scanner(fiftyFiftyF);
+            if (myReader.hasNextLine()) {
+                dateFiftyFiftyF = String.valueOf(fiftyFiftyF = new File(myReader.nextLine().trim()));
+            }
+            myReader.close();
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error");
+        }
+
+        if (!dateFiftyFiftyF.equals("123")) {
+            System.out.print("Купите игру! её цена: 1000\n" +
+                    "Нажмите 'Enter' - для покупки");
+            System.in.read();
+            getGame.setFiftyFifty("123");
+
+            if (balance != 1000) {
+                System.out.println("Недостаточно средств!");
+                return;
+            } else {
+                balance -= 1000;
+            }
+        }*/
+        if (!Main.getSellGeme(Main.fiftyFiftyF).equals("123")) {
+            System.out.println("Купите игру!");
+            return;
+        }
+
+        System.out.print("Введите ставку(min: 100, max: 500): ");
         bet = scanner.nextInt();
         scanner.nextLine();
 
         if (bet > balance || bet <= 0) {
             System.out.println("Недостаточно средств!");
             return;
+        } else if (bet < 100 || bet > 500) {
+            System.out.println("Ставка слишком низкая или высокая");
         }
 
         boolean win = random.nextInt(100) < 35;
@@ -56,12 +103,17 @@ public class Casino {
     }
 
     private void wheelOfFortune() {
-        System.out.print("Введите ставку(минимум 1000): ");
+        if (!Main.getSellGeme(Main.wheelOfFortuneF).equals("321")) {
+            System.out.println("Купите игру!");
+            return;
+        }
+
+        System.out.print("Введите ставку(min: 1000, max: 2500): ");
         bet = scanner.nextInt();
         scanner.nextLine();
 
-        if (bet > balance || bet < 1000) {
-            System.out.println("Ставка слишком низкая или недостаточно средств!");
+        if (bet > balance || bet < 1000 || bet > 2500) {
+            System.out.println("Ставка слишком низкая/высокая или недостаточно средств!");
             return;
         }
 
@@ -87,16 +139,21 @@ public class Casino {
     }
 
     private void craps() throws IOException, InterruptedException {
+        if (!Main.getSellGeme(Main.crapsF).equals("231")) {
+            System.out.println("Купите игру!");
+            return;
+        }
+
         int craps1 = random.nextInt(6);
         int craps2 = random.nextInt(6);
         int sumCraps;
 
-        System.out.print("Введите ставку: ");
+        System.out.print("Введите ставку(min: 1500, max: 3000): ");
         bet = scanner.nextInt();
         scanner.nextLine();
 
-        if (bet > balance || bet <= 0) {
-            System.out.println("Недостаточно средств!");
+        if (bet > balance || bet <= 0 || bet < 1500 || bet > 3000) {
+            System.out.println("Ставка слишком низкая/высокая или недостаточно средств!");
             return;
         }
 

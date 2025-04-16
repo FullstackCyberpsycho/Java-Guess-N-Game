@@ -43,14 +43,34 @@ public class RunLeve {
                 System.out.println("Java: Больше!");
             } else {
                 int winAmount = 0;
-                switch (countGo) {
-                    case 2: winAmount = 100; /*totalWins = winAmount; stats.setTotalWins(totalWins);*/ break;
-                    case 3: winAmount = 70; break;
-                    case 4: winAmount = 50; break;
-                    case 5: winAmount = 10; break;
-                    case 6: winAmount = 5; break;
-                    case 7: winAmount = 1; break;
-                }
+                    if (javaNumR == 10) {
+                    switch (countGo) {
+                        case 2: winAmount = 100; /*totalWins = winAmount; stats.setTotalWins(totalWins);*/ break;
+                        case 3: winAmount = 70; break;
+                        case 4: winAmount = 50; break;
+                        case 5: winAmount = 10; break;
+                        case 6: winAmount = 5; break;
+                        case 7: winAmount = 1; break;
+                    }
+                } else if (javaNumR == 30) {
+                        switch (countGo) {
+                            case 2: winAmount = 100; break;
+                            case 3: winAmount = 70; break;
+                            case 4: winAmount = 50; break;
+                            case 5: winAmount = 10; break;
+                            case 6: winAmount = 5; break;
+                            case 7: winAmount = 1; break;
+                        }
+                } else if (javaNumR == 50) {
+                        switch (countGo) {
+                            case 1: winAmount = 500; break;
+                            case 2: winAmount = 250; break;
+                            case 3: winAmount = 100; break;
+                            case 4: winAmount = 50; break;
+                            case 5: winAmount = 15; break;
+                            case 6: winAmount = 5; break;
+                        }
+                    }
 
                 balance += winAmount;
                 Main.setBalance(balance);
@@ -102,12 +122,13 @@ public class RunLeve {
             } else {
                 int winAmount = 0;
                 switch (countGo) {
-                    case 1: winAmount = 100; break;
-                    case 2: winAmount = 70; break;
-                    case 3: winAmount = 50; break;
-                    case 4: winAmount = 10; break;
-                    case 5: winAmount = 5; break;
-                    case 6: winAmount = 1; break;
+                    // сделать случаным...
+                    case 2: winAmount = 1000; break;
+                    case 3: winAmount = 700; break;
+                    case 4: winAmount = 400; break;
+                    case 5: winAmount = 200; break;
+                    case 6: winAmount = 50; break;
+                    case 7: winAmount = 30; break;
                 }
 
                 balance += winAmount;

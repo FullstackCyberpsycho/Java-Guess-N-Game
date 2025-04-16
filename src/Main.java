@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class Main{
     private static int balance = 0;
     static File balanceF = new File("src/resources/balance.txt");
+    static File fiftyFiftyF = new File("src/resources/getFiftyFifty.txt");
+    static File wheelOfFortuneF = new File("src/resources/getWheelOfFortune.txt");
+    static File crapsF = new File("src/resources/getCraps.txt");
 
     public static void main(String[] args) throws IOException, InterruptedException {
         start();
@@ -15,7 +18,6 @@ public class Main{
         PrintInfo print = new PrintInfo();
 
         while (true) {
-
             print.mainMenu();
             choice = scanner.nextLine();
             switch (choice) {
@@ -27,6 +29,7 @@ public class Main{
                 case "2": new Casino(); break;
                 case "3": print.rules(); break;
                 case "4": print.statistics(); break;
+                case "5": new Store(); break;
             }
         }
     }
@@ -58,4 +61,27 @@ public class Main{
             System.out.println("Ошибка при записи баланса.");
         }
     }
+
+    public static void setSellGeme(File gameF, String key) {
+        try (FileWriter fileWriter = new FileWriter(gameF, false)) {
+            fileWriter.write(key);
+        } catch (IOException e) {
+            System.out.println("Ошибка при записи баланса.");
+        }
+    }
+
+    public static String getSellGeme(File gameF) {
+        String date = "";
+        try {
+            Scanner myReader = new Scanner(gameF);
+            if (myReader.hasNextLine()) {
+                date = myReader.nextLine().trim();
+            }
+            myReader.close();
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Ошибка при чтении баланса.");
+        }
+        return date;
+    }
+
 }
