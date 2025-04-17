@@ -44,7 +44,7 @@ public class PrintInfo {
     }
 
     public void mainMenu() {
-        System.out.print("beta 2.7\n" +
+        System.out.print("beta 2.7.5\n" +
                 "1 - Угадай число\n" +
                 "2 - Казино\n" +
                 "3 - Правила\n" +

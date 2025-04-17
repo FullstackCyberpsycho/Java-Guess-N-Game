@@ -40,42 +40,6 @@ public class Casino {
     }
 
     private void fiftyFifty() throws IOException {
-        /*if (getGame.getFiftyFifty("")) {
-            System.out.print("Купите игру! её цена: 1000\n" +
-                    "Нажмите 'Enter' - для покупки");
-            System.in.read();
-
-            if (balance != 1000) {
-                System.out.println("Недостаточно средств!");
-                return;
-            } else {
-                balance -= 1000;
-            }
-        }
-        try {
-            //File fiftyFiftyF = null;
-            Scanner myReader = new Scanner(fiftyFiftyF);
-            if (myReader.hasNextLine()) {
-                dateFiftyFiftyF = String.valueOf(fiftyFiftyF = new File(myReader.nextLine().trim()));
-            }
-            myReader.close();
-        } catch (IOException | NumberFormatException e) {
-            System.out.println("Error");
-        }
-
-        if (!dateFiftyFiftyF.equals("123")) {
-            System.out.print("Купите игру! её цена: 1000\n" +
-                    "Нажмите 'Enter' - для покупки");
-            System.in.read();
-            getGame.setFiftyFifty("123");
-
-            if (balance != 1000) {
-                System.out.println("Недостаточно средств!");
-                return;
-            } else {
-                balance -= 1000;
-            }
-        }*/
         if (!Main.getSellGeme(Main.fiftyFiftyF).equals("123")) {
             System.out.println("Купите игру!");
             return;
